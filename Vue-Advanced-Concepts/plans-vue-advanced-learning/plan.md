@@ -89,6 +89,16 @@ Phase 1 (Setup)
 6. **8 sections theo roadmap.sh/vue + Vitest** — learning path chuẩn, progressive difficulty
 7. **Vitest** — unit test, component test, store test, mocking patterns
 
+## Known Issues & Notes
+
+| Issue | Impact | Where to Fix | Detail |
+|---|---|---|---|
+| Project uses **Nuxt 4** (not 3) | Low — APIs compatible | All phases | `nuxt@^4.4.2`, some modules behave differently |
+| `@pinia-plugin-persistedstate/nuxt` deprecated | High — crashes at runtime | Phase 4 | Must use manual Pinia plugin setup instead |
+| `@nuxt/content v3` needs `better-sqlite3` | Low — just install it | Done (Phase 1) | `npm install better-sqlite3` |
+| `@nuxt/image` → `sharp` build fails | Low — images still work | Phase 6 | Set `image: { provider: 'none' }` as workaround |
+| `@iconify-json/heroicons` needed | Low — just install it | Done (Phase 1) | Icons won't render without this devDep |
+
 ## Research
 
 - [Nuxt 3 Ecosystem](./research/researcher-01-nuxt3-ecosystem.md)

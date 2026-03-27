@@ -167,5 +167,16 @@ project-root/
 | Tailwind v4 config differences | Medium | Low | Follow @nuxt/ui docs (Tailwind v4 is auto-configured) |
 | Module compatibility issues | Low | High | Test each module incrementally |
 
+## Implementation Notes (2026-03-27)
+
+> Discovered during implementation — important context for later phases.
+
+1. **Nuxt 4, not Nuxt 3** — Project was initialized with `nuxt@^4.4.2`. APIs are largely compatible but some modules behave differently.
+2. **`@pinia-plugin-persistedstate/nuxt` is deprecated and incompatible with Nuxt 4** — Crashes at runtime (`Cannot read properties of undefined (reading 'use')`). Removed from modules. Phase 4 must configure Pinia persistence manually (e.g., `pinia-plugin-persistedstate` as a Nuxt plugin).
+3. **`@nuxt/content v3` requires `better-sqlite3`** — Must be installed explicitly (`npm install better-sqlite3`).
+4. **`@nuxt/image` requires `ipx` which depends on `sharp`** — `sharp` native build fails on this machine. Workaround: set `image: { provider: 'none' }` in `nuxt.config.ts`. Phase 6 should revisit (try `npm install --platform=darwin sharp` or use a cloud image provider).
+5. **`@iconify-json/heroicons` must be installed separately** — `@nuxt/ui` does not bundle icon sets. Added as devDependency.
+6. **`useAppConfig()` nested keys** — In Nuxt 4, custom keys under `defineAppConfig()` work but require safe access (`appConfig?.site?.title`) to avoid SSR crashes during initial render.
+
 ## Next Steps
 After this phase, proceed to **[Phase 2: Content Architecture](./phase-02-content-architecture.md)** to define content collections, create the directory structure, and build navigation components.
