@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const appConfig = useAppConfig()
+const appConfig = useAppConfig() as any
+const siteTitle = appConfig?.site?.title ?? 'Vue Advanced Concepts'
+const siteDescription = appConfig?.site?.description ?? 'Hands-on Vue/Nuxt learning platform with interactive playgrounds'
 </script>
 
 <template>
@@ -9,10 +11,10 @@ const appConfig = useAppConfig()
       <div class="max-w-3xl mx-auto">
         <UIcon name="i-heroicons-academic-cap" class="w-16 h-16 text-primary mx-auto mb-6" />
         <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-          {{ appConfig.site.title }}
+          {{ siteTitle }}
         </h1>
         <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
-          {{ appConfig.site.description }}
+          {{ siteDescription }}
         </p>
         <UButton
           to="/docs/fundamentals/single-file-components"

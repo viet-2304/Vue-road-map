@@ -9,8 +9,11 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/fonts',
     '@nuxt/image',
-    '@pinia-plugin-persistedstate/nuxt',
   ],
+
+  image: {
+    provider: 'none',
+  },
 
   ssr: true,
 

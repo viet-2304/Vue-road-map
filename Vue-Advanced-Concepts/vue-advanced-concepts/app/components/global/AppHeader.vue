@@ -1,5 +1,11 @@
 <script setup lang="ts">
-const appConfig = useAppConfig()
+const appConfig = useAppConfig() as any
+const siteTitle = appConfig?.site?.title ?? 'Vue Advanced Concepts'
+const navLinks = appConfig?.nav ?? [
+  { label: 'Home', to: '/' },
+  { label: 'Lessons', to: '/docs/fundamentals/single-file-components' },
+]
+
 const colorMode = useColorMode()
 
 function toggleColorMode() {
@@ -13,13 +19,13 @@ function toggleColorMode() {
       <!-- Logo / Title -->
       <NuxtLink to="/" class="flex items-center gap-2 font-bold text-lg text-gray-900 dark:text-white">
         <UIcon name="i-heroicons-academic-cap" class="w-6 h-6 text-primary" />
-        {{ appConfig.site.title }}
+        {{ siteTitle }}
       </NuxtLink>
 
       <!-- Navigation -->
       <nav class="hidden sm:flex items-center gap-6">
         <NuxtLink
-          v-for="link in appConfig.nav"
+          v-for="link in navLinks"
           :key="link.to"
           :to="link.to"
           class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
