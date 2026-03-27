@@ -98,6 +98,7 @@ Phase 1 (Setup)
 | `@nuxt/content v3` needs `better-sqlite3` | Low — just install it | Done (Phase 1) | `npm install better-sqlite3` |
 | `@nuxt/image` → `sharp` build fails | Low — images still work | Phase 6 | Set `image: { provider: 'none' }` as workaround |
 | `@iconify-json/heroicons` needed | Low — just install it | Done (Phase 1) | Icons won't render without this devDep |
+| @nuxt/ui v4 needs explicit CSS file | High — no styles without it | Done (Phase 1) | Create `app/assets/css/main.css` with `@import "tailwindcss"` + `@import "@nuxt/ui"`, add to `css` in nuxt.config |
 
 ## Research
 
