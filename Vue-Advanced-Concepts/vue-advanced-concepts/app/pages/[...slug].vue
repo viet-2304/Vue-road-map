@@ -32,6 +32,9 @@ function flattenToc(links: any[]): { id: string; text: string; depth: number }[]
   }
   return result
 }
+
+// Provide TOC data to the docs layout
+provide('toc-links', tocLinks)
 </script>
 
 <template>
@@ -41,9 +44,5 @@ function flattenToc(links: any[]): { id: string; text: string; depth: number }[]
     <div v-else class="text-center py-20">
       <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Page not found</h1>
     </div>
-
-    <template #toc>
-      <TableOfContents :links="tocLinks" />
-    </template>
   </div>
 </template>

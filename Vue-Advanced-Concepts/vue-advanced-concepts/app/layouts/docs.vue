@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const tocLinks = inject<any>('toc-links', ref([]))
+</script>
+
 <template>
   <div class="min-h-screen flex flex-col">
     <AppHeader />
@@ -14,7 +18,7 @@
 
       <!-- Table of contents -->
       <aside class="hidden lg:block border-l border-gray-200 dark:border-gray-800 p-4 overflow-y-auto sticky top-16 h-[calc(100vh-4rem)]">
-        <slot name="toc" />
+        <TableOfContents :links="tocLinks" />
       </aside>
     </div>
     <AppFooter />
