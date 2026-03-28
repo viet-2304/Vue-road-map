@@ -36,7 +36,7 @@ Website học Vue/Nuxt xây dựng bằng chính Nuxt 3 — mỗi concept có th
 |---|---|---|---|---|
 | 1 | [Project Setup](./phase-01-project-setup.md) | ~2h | done | Init Nuxt 3, install modules, layouts, base pages |
 | 2 | [Content Architecture](./phase-02-content-architecture.md) | ~3h | done | Collections, 38 lesson stubs, sidebar/TOC/breadcrumb |
-| 3 | [Interactive Playground](./phase-03-interactive-playground.md) | ~3h | pending | @vue/repl MDC component, CodeExample, playground files |
+| 3 | [Interactive Playground](./phase-03-interactive-playground.md) | ~3h | done | @vue/repl MDC component, CodeExample, playground files |
 | 4 | [Learning Features](./phase-04-learning-features.md) | ~3h | pending | Progress tracking, MiniSearch, dark/light theme |
 
 ### Part B — Content (Phase 5)
