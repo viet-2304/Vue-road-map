@@ -1,0 +1,9 @@
+# Plan files (local only)
+**/plans-*/
+
+# Claude config
+CLAUDE.md
+
+# Misc
+.DS_Store
+*.log
