@@ -33,6 +33,7 @@ export default defineNuxtConfig({
   },
 
   app: {
+    baseURL: process.env.GITHUB_ACTIONS ? '/Vue-road-map/' : '/',
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
