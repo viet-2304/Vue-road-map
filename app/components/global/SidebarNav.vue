@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRoute()
+const progress = useProgressStore()
 const { data: docs } = await useAsyncData('sidebar-docs', () =>
   queryCollection('docs').order('section', 'ASC').order('order', 'ASC').all(),
 )
@@ -61,7 +62,12 @@ watchEffect(() => {
           class="flex items-center justify-between w-full px-2 py-1.5 rounded-md text-left font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           @click="toggleSection(section.num)"
         >
-          <span>{{ section.num }}. {{ section.title }}</span>
+          <span class="flex items-center gap-1.5">
+            {{ section.num }}. {{ section.title }}
+            <span class="text-xs text-gray-400 font-normal">
+              {{ section.items.filter(i => progress.isComplete(i.path)).length }}/{{ section.items.length }}
+            </span>
+          </span>
           <UIcon
             :name="expandedSections.has(section.num) ? 'i-heroicons-chevron-down' : 'i-heroicons-chevron-right'"
             class="w-4 h-4 shrink-0"
@@ -71,10 +77,15 @@ watchEffect(() => {
           <li v-for="item in section.items" :key="item.path">
             <NuxtLink
               :to="item.path"
-              class="block px-2 py-1 rounded-md text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              class="flex items-center gap-1.5 px-2 py-1 rounded-md text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               :class="{ 'bg-primary-50 dark:bg-primary-900/20 text-primary font-medium': route.path === item.path }"
             >
-              {{ item.title }}
+              <UIcon
+                v-if="progress.isComplete(item.path)"
+                name="i-heroicons-check-circle"
+                class="w-4 h-4 text-green-500 shrink-0"
+              />
+              <span>{{ item.title }}</span>
             </NuxtLink>
           </li>
         </ul>

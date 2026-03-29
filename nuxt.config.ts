@@ -11,6 +11,8 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/fonts',
     '@nuxt/image',
+    '@pinia/nuxt',
+    '~/modules/search-index',
   ],
 
   image: {

@@ -7,6 +7,7 @@ const navLinks = appConfig?.nav ?? [
 ]
 
 const colorMode = useColorMode()
+const searchOpen = ref(false)
 
 function toggleColorMode() {
   colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
@@ -36,13 +37,14 @@ function toggleColorMode() {
 
       <!-- Actions -->
       <div class="flex items-center gap-2">
-        <!-- Search trigger (placeholder, wired in Phase 4) -->
+        <!-- Search trigger -->
         <UButton
           icon="i-heroicons-magnifying-glass"
           variant="ghost"
           color="neutral"
           size="sm"
-          aria-label="Search"
+          aria-label="Search (Cmd+K)"
+          @click="searchOpen = true"
         />
 
         <!-- Color mode toggle -->
@@ -56,5 +58,6 @@ function toggleColorMode() {
         />
       </div>
     </div>
+    <SearchPalette v-model="searchOpen" />
   </header>
 </template>
