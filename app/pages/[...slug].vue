@@ -44,5 +44,6 @@ provide('toc-links', tocLinks)
     <div v-else class="text-center py-20">
       <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Page not found</h1>
     </div>
+    <LessonComplete v-if="page" />
   </div>
 </template>

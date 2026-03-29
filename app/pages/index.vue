@@ -23,6 +23,9 @@ const siteDescription = appConfig?.site?.description ?? 'Hands-on Vue/Nuxt learn
           icon="i-heroicons-arrow-right"
           trailing
         />
+        <ClientOnly>
+          <ProgressBar />
+        </ClientOnly>
       </div>
     </section>
 
