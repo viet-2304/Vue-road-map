@@ -23,6 +23,12 @@ export default defineNuxtConfig({
     '/**': { prerender: true },
   },
 
+  nitro: {
+    prerender: {
+      failOnError: false,
+    },
+  },
+
   content: {
     highlight: {
       theme: {
